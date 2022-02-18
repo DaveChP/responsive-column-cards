@@ -17,17 +17,17 @@ article {
   border-radius: 5px;
   background: #fff; }
 
-.D {
+.column-container {
   margin: 4em; }
-  .D h1 {
+  .column-container h1 {
     margin-top: 0;
     margin-left: 0.75rem; }
-  .D main {
+  .column-container main {
     -webkit-columns: 250px;
             columns: 250px;
     -webkit-column-gap: 20px;
             column-gap: 20px; }
-  .D article {
+  .column-container article {
     -webkit-column-break-inside: avoid;
             break-inside: avoid-column;
     margin-bottom: 1rem; }
