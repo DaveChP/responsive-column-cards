@@ -9,3 +9,10 @@ The layout resembles that of keep.google.com. In particular, the cards, and cont
 Modifications
 Initial commit is unchanged from original, bar renaming styles.css and the link to it from index.html
 
+All classes other than .D were removed from styles.css. Index.html contains only one main class (D). Presumably, the style sheet was built for several pages containing other classes. 
+
+Compound selectors including a named class were deleted from styles.css. Namely .index ul under a @supports category, and a .index block. 
+
+Anchor rules were also removed from styles.css, index.html contains no links. Anchor styles can be added back as required. 
+
+Second commit was made following gutting of styles.css.
