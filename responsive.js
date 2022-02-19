@@ -1,6 +1,12 @@
 // document.getElementsByClassName('output')[0].innerHTML="<h2>all good here!</h2>";
 
 const report = document.getElementsByClassName('output')[0];
+window.addEventListener('load', getCardData);
+window.addEventListener('resize', getCardData);
+
+function getCardData() {
+// has to be called after load and resize or will give silly heights and some other odd stuff;
+
 const cardContainer = document.getElementsByTagName('DIV')[1];
 let containerData = cardContainer.getBoundingClientRect();
 
@@ -30,14 +36,12 @@ Array.prototype.forEach.call(cardCollection, (card, index) =>
     for (property in cardData) {
     markup += `${property}: ${parseInt(cardData[property])}, `;
     } // end current property of cardData object;
-  markup += `priority attribute: ${card.dataset.priority}<br>`;
+  markup += `x-offset: ${window.pageXOffset}, y-offset: ${window.pageYOffset}, priority attribute: ${card.dataset.priority}<br>`;
 }); // end for each card in collection;
 
-
-
-
-
 report.innerHTML = markup;
+
+} // end resize trigger;
 
 /*have added data-priority= attributes to each article element in index.html
 these are directly accessible in JS with the .dataset property of an element: element.dataset.priority

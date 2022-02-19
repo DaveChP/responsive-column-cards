@@ -58,7 +58,14 @@ This data will enable a strategy to be devised to calculate positions and assign
 
 Commit made at this point.
 
-ß
+###Isoalting Data Capture in Even Functions
+Inspection of the data returned from the .getBoundingClientRect method revealed some odd values that could not easily be explained. Specifically, heights were often way off and had no relationship to those readable from the css inspector, nor to any consideration of margins, padding and borders. Also, the item at the foot of column 1 was often reported as being at the top of column 2).
+
+After much fiddling, it seems that (despite the script being defered) the errors disappeared when the data steps were placed into a function and triggered through event listeners for load and resize. The numbers seem now to be sensible and should allow positions to be manipulated to maintain priority order from the top of the page.
+
+Commit made in order to lock in progess on event listeners.
+
+
 
 
 
