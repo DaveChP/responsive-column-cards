@@ -32,3 +32,14 @@ Closer inspection of the css revealed the reason and the solution. The columns a
 
 Before committing, the arbitrary class name D, was changed to colum-container to create self-explanatory class names. These changes were then commited as the third commit.  
 
+###Preliminary Javascript
+
+In order to re-order the cards to keep priority content towards the top following re-sizing, some method of working out how many columns are being used will be needed. As the columns items have a width attribute (albeit one that can vary tp fill available space within some, unknown yet, ranges), it will be possible to calculate the number of columns if the container width is known. To this end, a we'll extract some data from the browser using javascript, and display it at the top of the page. Ideally, putative widths should update while resizing.
+
+To this end, a new div (class output) was created at the top of the page. It, and the main div were shrunk to 95% width and centred.
+
+A new file to contain the javascript was created (responsive.js) and linked to from index. html. JS was used to send text to the .output div confirming all good. 
+
+These changes were committed (along with putting a relevant title on the html page).
+
+ 

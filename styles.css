@@ -5,7 +5,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 80%;
-  background: #ccc;
+  background: #fff;
   line-height: 1.2; }
 
 img {
@@ -17,8 +17,15 @@ article {
   border-radius: 5px;
   background: #fff; }
 
-.column-container {
-  margin: 4em; }
+.column-container, .output {
+  // margin: 4em; 
+  width: 90%;
+  border: 1px solid black;
+  padding: 20px;
+  margin: auto;
+  background: #ccc;
+  margin-bottom: 20px;
+}
   .column-container h1 {
     margin-top: 0;
     margin-left: 0.75rem; }
