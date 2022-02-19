@@ -26,11 +26,14 @@ markup += `${cardCollection.length} cards were assigned to a list array<br>`; //
 
 // cardCollection.forEach((card, index) =>
 // not an array, can't use directly;
-// instead:
+// instead;
+
+let cardWidth = 0;
 
 Array.prototype.forEach.call(cardCollection, (card, index) =>
  {
   let cardData = card.getBoundingClientRect();
+  cardWidth = cardData.width;
   markup += `panel ${index} -  `;
 
     for (property in cardData) {
@@ -39,6 +42,8 @@ Array.prototype.forEach.call(cardCollection, (card, index) =>
   markup += `x-offset: ${window.pageXOffset}, y-offset: ${window.pageYOffset}, priority attribute: ${card.dataset.priority}<br>`;
 }); // end for each card in collection;
 
+let numCols = parseInt(containerData.width/cardWidth);
+markup += `Number of columns: ${numCols} columns<br>`;
 report.innerHTML = markup;
 
 } // end resize trigger;

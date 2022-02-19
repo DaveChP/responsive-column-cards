@@ -65,6 +65,8 @@ After much fiddling, it seems that (despite the script being defered) the errors
 
 Commit made in order to lock in progess on event listeners.
 
+###How Many Columns?
+At any given resize, the number of columns is easily calculated by dividing the container div width, by the card width (all equal to each other, but changes in resize), and rounding down. Javascript was modified to include calculation of number of rows for each resize. Commit made. 
 
 
 
