@@ -46,3 +46,22 @@ javascript was used to extract and report the width of the container div using .
 
 A further commit for minor (mostly now commented out) changes to index and styles, which exlpored making float columns inside the report div, was also made.
  
+###Using JS to Extract and Present Data on Card Positions and Sizes
+The cards (each defined by an article tag) were collected together in an element list called cardCollection
+Using .getBoundingClientRect() on each member of the list, data about position, height, and width were extracted and displayed in the output div.
+
+A custom data- attribute was added to each article tag giving them a numberical priority extractable by the .dataset property of the element:
+data-priority="1" // inside article opening tag in html
+let priority = element.dataset.priority; // javascript extraction.
+
+This data will enable a strategy to be devised to calculate positions and assign different priorities to different positions.
+
+Commit made at this point.
+
+ß
+
+
+
+
+
+
