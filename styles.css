@@ -38,3 +38,39 @@ article {
     -webkit-column-break-inside: avoid;
             break-inside: avoid-column;
     margin-bottom: 1rem; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Not needed for now */
+/*divs inside output container floated into columns */
+
+.output div {
+  border: 1px solid black;
+  background: #fff;
+  width: 33%;
+  margin: 0;
+  padding: 0 5px;
+  float:left;
+  min-height: 50px;
+}
+
+.output:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.output {
+  padding: 10px 20px;
+}
+*/

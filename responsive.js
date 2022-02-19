@@ -10,6 +10,8 @@ markup += `the display div occupies ${parseInt(containerData.width*100/window.in
 
 report.innerHTML = markup;
 
+/* might later break the output div into three float children to allow columns to be reported, experiments were left in index and styles but commented out */
+
 /* properties available in .getBoundingRect() are:
 {
     width: 960,

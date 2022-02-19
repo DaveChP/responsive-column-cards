@@ -43,4 +43,6 @@ A new file to contain the javascript was created (responsive.js) and linked to f
 These changes were committed (along with putting a relevant title on the html page).
 
 javascript was used to extract and report the width of the container div using .getBoundingRect() which has the following properties: width, height, top, bottom, left, and right. The extracted width, and its percentage of window.innerWidth were correctly reported to the output div. This minor progress was committed while thought is given to how to calculate a stacking order to display cards by priority. 
+
+A further commit for minor (mostly now commented out) changes to index and styles, which exlpored making float columns inside the report div, was also made.
  
