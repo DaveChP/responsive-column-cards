@@ -26,18 +26,29 @@ article {
   background: #ccc;
   margin-bottom: 20px;
 }
-  .column-container h1 {
-    margin-top: 0;
-    margin-left: 0.75rem; }
-  .column-container main {
-    -webkit-columns: 250px;
-            columns: 250px;
-    -webkit-column-gap: 20px;
-            column-gap: 20px; }
-  .column-container article {
-    -webkit-column-break-inside: avoid;
-            break-inside: avoid-column;
-    margin-bottom: 1rem; }
+
+.column-container main {
+  -webkit-columns: 250px;
+          columns: 250px;
+  -webkit-column-gap: 20px;
+          column-gap: 20px; 
+}
+
+.column-container article {
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid-column;
+  margin-bottom: 1rem; 
+}
+
+
+/* temporary add for testing re-ordering below normal content */
+.column-container div {
+  -webkit-columns: 250px;
+          columns: 250px;
+  -webkit-column-gap: 20px;
+          column-gap: 20px; 
+}
+
 
 
 

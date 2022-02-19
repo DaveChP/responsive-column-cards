@@ -1,6 +1,7 @@
 // document.getElementsByClassName('output')[0].innerHTML="<h2>all good here!</h2>";
 
 const report = document.getElementsByClassName('output')[0];
+
 window.addEventListener('load', getCardData);
 window.addEventListener('resize', getCardData);
 
@@ -46,7 +47,95 @@ let numCols = parseInt(containerData.width/cardWidth);
 markup += `Number of columns: ${numCols} columns<br>`;
 report.innerHTML = markup;
 
+distributeCards();
+
 } // end resize trigger;
+
+
+
+
+/* alternative process*/
+/* getCardData() was useful for extracting data from the card article elements 
+but the overall aim is to use that information to re-order elements after re-size.
+since the plan will use element collections, it makes sense to extract data one those collections have been extracted.
+hence, this alternative approach.
+*/
+
+function distributeCards() {
+// to be invoked on load, resize, or when new cards are added;
+// function distributes cards article elements in an order calculated
+// to push those of higher priority to towards the top of the display
+
+const cardsContainer = document.getElementsByTagName('main')[0];
+const containerWidth = parseInt(cardsContainer.getBoundingClientRect().width);
+
+// fetch card elements;
+const cardCollection = cardsContainer.getElementsByTagName('article');
+const cardWidth = parseInt(cardCollection[0].getBoundingClientRect().width);
+const columnCount = Math.floor(containerWidth/cardWidth);
+const outputTarget = document.getElementsByClassName('output')[1];
+let markup = "";
+
+markup += `${cardCollection.length} card elements were retrieved, each ${cardWidth}px wide, across ${columnCount} columns<br>`;
+
+outputTarget.innerHTML = markup;
+
+// test changing order or collection
+let newCollection = new DocumentFragment();
+
+// prepending should add cards back-to-front;
+
+while (cardCollection.length > 0) {
+  newCollection.append(cardCollection[cardCollection.length-1]);
+} // next card of collection;
+
+// can't have two mains so will use a div instead
+let mainDiv = document.createElement('div');
+mainDiv.appendChild(newCollection);
+
+let containerDiv = document.createElement('div');
+containerDiv.setAttribute("class", "column-container");
+containerDiv.appendChild(mainDiv);
+
+document.body.appendChild(containerDiv);
+
+
+}// end function distributeCards; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*have added data-priority= attributes to each article element in index.html
 these are directly accessible in JS with the .dataset property of an element: element.dataset.priority

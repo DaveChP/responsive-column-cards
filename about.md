@@ -68,6 +68,12 @@ Commit made in order to lock in progess on event listeners.
 ###How Many Columns?
 At any given resize, the number of columns is easily calculated by dividing the container div width, by the card width (all equal to each other, but changes in resize), and rounding down. Javascript was modified to include calculation of number of rows for each resize. Commit made. 
 
+###First Try at Reordering ELements
+A new function distributeCards() was created. it will collect elements and attempt to reorder them in a new panel at the foot of the document. It does demonstrate some useful features but caused an unexpected result. Once an element is put somewhere, its original instance is lost. Because a for next loop was used to reverse the order or elements into a new div, it skipped successive elements (as the list was being reduced in size by one each time, with the fist element being removed but the index advanced). 
+
+After some experimentation, the desired effect was achieved using a while(collection.length>0) loop being used to transfer the last item of the collection to the new div, by referencing it by its index set to the length of the collection -1. This could be adapted to remove the items into memory and refil the original container with the re-ordered elements without the need for a new container element. 
+
+Commit made.
 
 
 
