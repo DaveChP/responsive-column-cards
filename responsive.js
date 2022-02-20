@@ -104,6 +104,23 @@ assignedElementCount++;
 
 markup += `${colsArray.join("<br>")}<br>`;
 
+// column arrays filled, transfer in order to a parent element;
+// in the html, the article collection is inside a unique main element
+// main is the single child of a div with class 'column-container'
+// therefore, we can add each article to a new main element and replace 
+// the existing contents of div.column-container with the new main element;
+
+const mainContainer = document.createElement('main');
+
+for (let i=0; i<colsArray.length; i++) {
+// each colsArray element is an array, colsArray[i][0] holds an array of elements for that column;
+  for (let j=0; j<colsArray[i][0].length; j++) {
+    mainContainer.appendChild(colsArray[i][0][j]);
+  } // next j element in colsArray[i][0]
+} // next i column array;
+
+let columnContainer = document.getElementsByClassName('column-container')[0];
+columnContainer.replaceChildren(mainContainer);
 
 report.innerHTML = markup;
 } // end function distributeCards;

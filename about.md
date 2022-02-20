@@ -78,6 +78,10 @@ Commit made.
 ###Real Sorting
 A new version of distributeCards() was built, the original was commented out at the foot of responsive.js. It creates an array of arrays to house columns, one primary index for each column with inner indices holding an array of elements [n][0], followed by an integer value representing the cumulative element heights as they are added [n][1]. Elements are added iteratively from the priority-ranked elementsArray, with a sort being performed on colsArray between each addition to make index [0] hold the element with the shortest column so far. Thus, by adding the next array from the priority list, elements are always added to the shortest column. No attempt has yet been made to display the re-ordered elements.
 
+###Replacing Page Elements
+The article elements are now distributed and ranked inside the cols arrar. Since the html structure has the articles as the only children of a unique main element, a new main element was created into which the articles were filled by iterating a nested for-next loop (outer loop looping through each column, inner loop within (down) that column. Lastly, the existing main element on the page (containing the old order of articles) was simply replaced (it being the sole child of div.column-container). This works but not entirely as intended: the top row was intended to show priorities from left to right. Because the row array is sorted before each new element was assigned (in order to add the new element to the shortest column), the order is not preserved. Will fix after committing this progress. 
+
+
 
 
 
