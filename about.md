@@ -75,7 +75,8 @@ After some experimentation, the desired effect was achieved using a while(collec
 
 Commit made.
 
-
+###Real Sorting
+A new version of distributeCards() was built, the original was commented out at the foot of responsive.js. It creates an array of arrays to house columns, one primary index for each column with inner indices holding an array of elements [n][0], followed by an integer value representing the cumulative element heights as they are added [n][1]. Elements are added iteratively from the priority-ranked elementsArray, with a sort being performed on colsArray between each addition to make index [0] hold the element with the shortest column so far. Thus, by adding the next array from the priority list, elements are always added to the shortest column. No attempt has yet been made to display the re-ordered elements.
 
 
 

@@ -51,6 +51,68 @@ distributeCards();
 
 } // end resize trigger;
 
+/*another alternative*/
+
+function distributeCards() {
+// building on the version of this function below
+// reorder and refil the main display panel
+const cardsContainer = document.getElementsByTagName('main')[0];
+const containerWidth = parseInt(cardsContainer.getBoundingClientRect().width);
+const cardCollection = cardsContainer.getElementsByTagName('article');
+const cardWidth = parseInt(cardCollection[0].getBoundingClientRect().width);
+const columnCount = Math.floor(containerWidth/cardWidth);
+const report = document.getElementsByClassName('output')[0];
+let markup = report.innerHTML;
+markup += `column count calculated from cardCollection: ${columnCount}<br>`;
+
+
+const elementsArray = [];
+
+for (let i=0; i<cardCollection.length; i++) {
+elementsArray.push([parseInt(cardCollection[i].dataset.priority), cardCollection[i], parseInt(cardCollection[i].getBoundingClientRect().height)]);
+}
+
+elementsArray.sort((a,b) => {return (a[0]>b[0]) ? 1 : -1;});
+// elementsArray is now ordered by priority, begining at highest priority =1;
+// elementsArray[i][0] holds priority value;
+// elementsArray[i][1] holds the respective element object;
+// elementsArray[i][2] holds height of element; 
+// this should now be like a static collection of elements, unaffected by dom changes;
+markup += elementsArray +"<br>";
+
+
+// make arrays to store column colections, one for each column;
+const colsArray = [];
+let assignedElementCount = 0; // will increment when each element is positioned in colsArray;
+
+for (let i=0; i<columnCount; i++) {
+colsArray[i] = [[elementsArray[assignedElementCount][1]], elementsArray[assignedElementCount][2] ];
+assignedElementCount++;
+} // next i columnArray initiated;
+
+markup += `${assignedElementCount} elements have been assigned to the colsArray<br>`;
+
+
+
+while (assignedElementCount < cardCollection.length) {
+colsArray.sort((a,b) => {return (a[1]>b[1]) ? 1 : -1});
+// firstElement now contains the element with the highest bottom;
+colsArray[0][0].push(elementsArray[assignedElementCount][1]);
+colsArray[0][1] += elementsArray[assignedElementCount][2]  
+assignedElementCount++;
+} // wend all elements assigned;
+
+markup += `${colsArray.join("<br>")}<br>`;
+
+
+report.innerHTML = markup;
+} // end function distributeCards;
+
+
+
+
+
+
 
 
 
@@ -60,7 +122,7 @@ but the overall aim is to use that information to re-order elements after re-siz
 since the plan will use element collections, it makes sense to extract data one those collections have been extracted.
 hence, this alternative approach.
 */
-
+/*
 function distributeCards() {
 // to be invoked on load, resize, or when new cards are added;
 // function distributes cards article elements in an order calculated
@@ -102,7 +164,7 @@ document.body.appendChild(containerDiv);
 
 }// end function distributeCards; 
 
-
+*/
 
 
 
