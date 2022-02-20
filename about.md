@@ -86,5 +86,17 @@ colsArray has one outer element for each column. Within each column are two elem
 We can ensure that the columns are ordered with the highest priority column tops in the lowest outer index, by adding a third element to mark its order, and sorting before filling the container element (filling is ordered).
 responsive.js was modified accordingly. The page now displays exactly as intended. Commit.
 
+<b>At this point, the desired features work</b>
+
+###Testing offsetWidth and Height Instead of BoundingClientRect() Data
+During development, comprehensive data from element.getBoundingClientRec() was used to understand the layout, to calculate the number of columns, and to update column heights as they were filled. Now that everything works, it might be possible to simplify things using offsetWidth and offsetHeight values instead. These properties are arguably more familiar to developers, take account of padding and borders, and return integer px values (thus removing the need to apply parseInt on BoundingClientRect data. 
+
+To test, a new branch was created called offsetWidths. Data from it will be reported to the screen and compared with the equivalent data obtained from the bounding client rectangle. Assuming the values are equivalent, calculation will be mofdified to use the simpler properties.
+
+There were small discrepancies between the values reported for either offset of bounding rectangle but the former agreed with the box model inspector. Apart from rounding differences, the only mild concern was that the spacing between cards is not included in the card widths. This could be extracted from the css property (where column gap is defined) but to calculate the relevant adjustment, the number of columns is needed (which in turn needs the widths to calculate). Since the gap is small compared to the card width, it might be safe to ignore it but there will remain the possibilty of unexpected results for rare combinations of sizes for cards, gaps and window resize instances. It was ignored previously so will be ignored now.
+
+The number of columns calculated using offset was the same as for the bounding rectangle method. Manual resizing failed to find any instances where the calculation did not agree with the observed column layout, even close to the transition between column numbers. The division to calculate the number of colums was performed without converting values to integers, and they are already rounded regardless of whether returned as strings or numbers (as only digits are present, coercion will take care of things if they are strings).
+
+Overall, the use of offset values presents no problems, and may be simpler and clearer than using the corresponding bounding rectangle values. 
 
 

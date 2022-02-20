@@ -47,6 +47,7 @@ let numCols = parseInt(containerData.width/cardWidth);
 markup += `Number of columns: ${numCols} columns<br>`;
 report.innerHTML = markup;
 
+
 distributeCards();
 
 } // end resize trigger;
@@ -65,6 +66,16 @@ const report = document.getElementsByClassName('output')[0];
 let markup = report.innerHTML;
 markup += `column count calculated from cardCollection: ${columnCount}<br>`;
 
+markup += `using offset widths, the width of the div is ${cardsContainer.offsetWidth}<br>`;
+markup += `the offset width of the cards is ${cardCollection[0].offsetWidth}<br>`;
+markup += `the number of columns calculated using offsets is ${Math.floor(cardsContainer.offsetWidth/cardCollection[0].offsetWidth)}<br>`;
+markup += `(that was calculated directly without parseInt being applied to the offset values)<br>`;
+markup += `using offset height the card have the following heights:<br>`;
+
+Array.prototype.forEach.call(cardCollection, (card, index) => {
+markup += `${card.offsetHeight} `;
+})
+markup += "<br>";
 
 const elementsArray = [];
 
