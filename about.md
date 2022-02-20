@@ -81,7 +81,10 @@ A new version of distributeCards() was built, the original was commented out at 
 ###Replacing Page Elements
 The article elements are now distributed and ranked inside the cols arrar. Since the html structure has the articles as the only children of a unique main element, a new main element was created into which the articles were filled by iterating a nested for-next loop (outer loop looping through each column, inner loop within (down) that column. Lastly, the existing main element on the page (containing the old order of articles) was simply replaced (it being the sole child of div.column-container). This works but not entirely as intended: the top row was intended to show priorities from left to right. Because the row array is sorted before each new element was assigned (in order to add the new element to the shortest column), the order is not preserved. Will fix after committing this progress. 
 
-
+###Preserving Column Order
+colsArray has one outer element for each column. Within each column are two elements, the first is a further array (with elements ordered 'down'), the second a measure of how long the column is. In order to add the next priority element to the shortest column, colsArray is sorted by column length before each new element is added (thus, the primary order is shuffled as it is filled). This means that the top element of the left most common may not have the highest priority - the only guarantee is that the highest priority element will be in the top row. Left-to-right priority order is not generally achievable but can be for the first, highest priority, most visible elements (beacuse they were each added to a column without height).
+We can ensure that the columns are ordered with the highest priority column tops in the lowest outer index, by adding a third element to mark its order, and sorting before filling the container element (filling is ordered).
+responsive.js was modified accordingly. The page now displays exactly as intended. Commit.
 
 
 

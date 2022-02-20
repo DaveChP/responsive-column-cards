@@ -86,9 +86,11 @@ const colsArray = [];
 let assignedElementCount = 0; // will increment when each element is positioned in colsArray;
 
 for (let i=0; i<columnCount; i++) {
-colsArray[i] = [[elementsArray[assignedElementCount][1]], elementsArray[assignedElementCount][2] ];
+colsArray[i] = [[elementsArray[assignedElementCount][1]], elementsArray[assignedElementCount][2], i ];
 assignedElementCount++;
 } // next i columnArray initiated;
+
+// note i added as element [col][2] this will allow cols to be ordered before display, despite being shuffled while filling;
 
 markup += `${assignedElementCount} elements have been assigned to the colsArray<br>`;
 
@@ -96,7 +98,7 @@ markup += `${assignedElementCount} elements have been assigned to the colsArray<
 
 while (assignedElementCount < cardCollection.length) {
 colsArray.sort((a,b) => {return (a[1]>b[1]) ? 1 : -1});
-// firstElement now contains the element with the highest bottom;
+// firstElement now contains the element with the highest bottom (lowest value);
 colsArray[0][0].push(elementsArray[assignedElementCount][1]);
 colsArray[0][1] += elementsArray[assignedElementCount][2]  
 assignedElementCount++;
@@ -109,6 +111,11 @@ markup += `${colsArray.join("<br>")}<br>`;
 // main is the single child of a div with class 'column-container'
 // therefore, we can add each article to a new main element and replace 
 // the existing contents of div.column-container with the new main element;
+
+// first order cols to restore original order
+// this makes top row have priority left-to-right;
+
+colsArray.sort((a,b) => {return (a[2]>b[2]) ? 1 : -1});
 
 const mainContainer = document.createElement('main');
 
