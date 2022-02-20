@@ -99,4 +99,14 @@ The number of columns calculated using offset was the same as for the bounding r
 
 Overall, the use of offset values presents no problems, and may be simpler and clearer than using the corresponding bounding rectangle values. 
 
-
+###Major Refactor
+After testing that offset widths and heights worked well, the code was modified to include them. Simultaneously, the entire .js was re-factored to:
+  remove earlier experiments
+  remove narratory comments
+  remove development data and its reporting to the output div
+  place the core functionality into a single function distributeCards()
+The refactored code was saved in a new file priority.js, and the corresponding link added from index.html.
+priority.js SUPERSEDES responsive.js (now redundant and will be deleted prior to commit).
+Index.html was modified to remove the output div and other superfluous parts. 
+Lastly, styles.css was cleaned up, removing obsolete blocks, commented parts , irrelevant selectors.
+Commit.

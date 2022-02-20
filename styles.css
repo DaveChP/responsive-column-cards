@@ -17,8 +17,7 @@ article {
   border-radius: 5px;
   background: #fff; }
 
-.column-container, .output {
-  // margin: 4em; 
+.column-container { 
   width: 90%;
   border: 1px solid black;
   padding: 20px;
@@ -39,49 +38,3 @@ article {
   break-inside: avoid-column;
   margin-bottom: 1rem; 
 }
-
-
-/* temporary add for testing re-ordering below normal content */
-.column-container div {
-  -webkit-columns: 250px;
-          columns: 250px;
-  -webkit-column-gap: 20px;
-          column-gap: 20px; 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Not needed for now */
-/*divs inside output container floated into columns */
-
-.output div {
-  border: 1px solid black;
-  background: #fff;
-  width: 33%;
-  margin: 0;
-  padding: 0 5px;
-  float:left;
-  min-height: 50px;
-}
-
-.output:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-.output {
-  padding: 10px 20px;
-}
-*/
