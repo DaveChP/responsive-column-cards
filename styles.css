@@ -54,15 +54,15 @@ p {
   padding-bottom: 0;
 }
 
-a.small {
+a.small, a.credit {
   color: #444;
   text-decoration: none;
   cursor: pointer;
   font-weight: 300;
 }
 
-a.small:hover {
-  color: #448;
+a.small:hover, a.credit:hover {
+  color: #44a;
   font-weight: 400;
 }
 

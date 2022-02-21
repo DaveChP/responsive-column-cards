@@ -110,3 +110,9 @@ priority.js SUPERSEDES responsive.js (now redundant and will be deleted prior to
 Index.html was modified to remove the output div and other superfluous parts. 
 Lastly, styles.css was cleaned up, removing obsolete blocks, commented parts , irrelevant selectors.
 Commit.
+
+###Adding Real Content to index.html
+The original content of the web page was replaced with new stuff relevant to the topic of making css columns reorder card content when resizing causes the number of columns to change. Free-to-use images were collected, mostly from unsplash.com, to illustrate cards. Some screen shots were also used. Each panel had a link to an acknowledgements page added and styled. Minor changes were made to styles.css to style a tags. Before commit, the original index.html was deleted and replaced with the new content. The commit also included the directory containing the images, and a text file with credits for the images.
+
+###Adding Acknowledgement Page
+Index.html was duplicated and used as a starting point for acknowledgements.html. image_credits.md was used to add approved attribution links.
