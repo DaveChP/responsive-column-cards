@@ -3,7 +3,9 @@ window.addEventListener('resize', distributeCards);
 
 function distributeCards() {
 const cardsContainer = document.getElementsByTagName('main')[0];
-const cardCollection = cardsContainer.getElementsByTagName('article');
+// try document instead of cardsContainer (page first loaded, no wrapper);
+const cardCollection = document.getElementsByTagName('article');
+console.log(cardCollection.length);
 const columnCount = Math.floor(cardsContainer.offsetWidth/cardCollection[0].offsetWidth)
 
 const elementsArray = [];
@@ -41,12 +43,19 @@ colsArray.sort((a,b) => {return (a[2]>b[2]) ? 1 : -1});
 // construct new main element, load ordered article elements into it, load it to page;
 const mainContainer = document.createElement('main');
 
+// fixed rare unexpected behaviour where small cards at the top of a column were sometimes dispaced to the foot of the previous column;
+// solution was to wrap each columns articles into its own div and (essential) use css to prevent the long div having any break points;
+
 for (let i=0; i<colsArray.length; i++) {
-// each colsArray element is an array, colsArray[i][0] holds an array of elements for that column;
+  let colWrapper = document.createElement('div');
+  colWrapper.classList.add("col-wrapper");
+
   for (let j=0; j<colsArray[i][0].length; j++) {
-    mainContainer.appendChild(colsArray[i][0][j]);
-  } // next j element in colsArray[i][0]
-} // next i column array;
+    colWrapper.appendChild(colsArray[i][0][j]);
+  } // next j card in col i
+// col i, all cards now appended to colWrapper div;
+  mainContainer.appendChild(colWrapper);
+} // next i col 
 
 let columnContainer = document.getElementsByClassName('column-container')[0];
 columnContainer.replaceChildren(mainContainer);

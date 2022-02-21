@@ -116,3 +116,6 @@ The original content of the web page was replaced with new stuff relevant to the
 
 ###Adding Acknowledgement Page
 Index.html was duplicated and used as a starting point for acknowledgements.html. image_credits.md was used to add approved attribution links. While creating the acknowledgements page, some unexpected behaviour was observed where cards load out of order. This seems to depend on the height of cards, or more specifically where relatively small cards are taken out of the order chosen for them by the javascript. For now, the new page will be committed.
+
+###Fixing Unexpected Column Breaks
+Under rare conditions, seemingly linked to short cards, columns would break, shifting cards to the wrong end of adjacent columns. The unwanted behaviour was fixed by adding a div wrapper to each column before appending them to the main container. Even with the div wrappers, columns were still sometimes broken unless the css was modified to include avoid-break explicitly to the column wrappers. Seems now to work fine. It is possible that column layout is no longer even needed as in principle the column wrappers could be changed to inline-block and floated next to each other. Might experiment with that idea but is probably not needed and may invite other odd behaviours.

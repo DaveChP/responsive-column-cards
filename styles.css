@@ -34,6 +34,12 @@ article {
           column-gap: 20px; 
 }
 
+.column-container div.col-wrapper{
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid-column;
+  margin-bottom: 1rem; 
+}
+
 .column-container article {
   -webkit-column-break-inside: avoid;
   break-inside: avoid-column;
