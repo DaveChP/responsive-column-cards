@@ -119,3 +119,6 @@ Index.html was duplicated and used as a starting point for acknowledgements.html
 
 ###Fixing Unexpected Column Breaks
 Under rare conditions, seemingly linked to short cards, columns would break, shifting cards to the wrong end of adjacent columns. The unwanted behaviour was fixed by adding a div wrapper to each column before appending them to the main container. Even with the div wrappers, columns were still sometimes broken unless the css was modified to include avoid-break explicitly to the column wrappers. Seems now to work fine. It is possible that column layout is no longer even needed as in principle the column wrappers could be changed to inline-block and floated next to each other. Might experiment with that idea but is probably not needed and may invite other odd behaviours.
+
+###Merged offsetWidths branch back to Master
+No changes had been made to Master while on the offsetWidths branch so the merge effectively undoes the branch.
